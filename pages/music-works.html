@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+<script src="../assets/js/site-data.js"></script>
+  <title>编曲作品｜朱炜贤</title>
+</head>
+<body class="sub-page music-page" data-page="music">
+  <audio id="bgm" data-audio="site.bgm" loop preload="auto"></audio>
+  <div class="site-bg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="noise"></i></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <header class="site-header" data-render="header"></header>
+  <main>
+    <section class="page-hero section-shell reveal-up" data-render="pageHero"></section>
+    <section class="section-shell" data-render="musicWorks"></section>
+  </main>
+  <div data-render="modalRoot"></div>
+  <button class="music-btn" id="musicBtn" type="button" aria-label="播放或暂停背景音乐"><span class="music-icon">♪</span><span class="music-text">BGM</span></button>
+  <footer class="site-footer"><a href="../home.html?section=portfolio-entry">返回</a><a href="../home.html">返回</a></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

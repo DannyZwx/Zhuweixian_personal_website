@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简历查看｜朱炜贤</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/site-data.js"></script>
+</head>
+<body class="sub-page resume-page" data-page="resume">
+  <audio id="bgm" data-audio="site.bgm" src="../assets/audio/bgm.mp3" loop preload="auto"></audio>
+  <div class="site-bg" aria-hidden="true"><i></i><i></i><i></i><span class="noise"></span></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <header class="site-header" data-render="header"></header>
+  <main>
+    <section class="page-hero section-shell reveal-up">
+      <p class="eyebrow" data-text="pages.resume.eyebrow">Resume</p>
+      <h1 data-text="pages.resume.title">简历查看</h1>
+      <p data-text="pages.resume.desc">这里用于展示可下载、可放大查看的个人简历图片与 PDF 文件。</p>
+    </section>
+
+    <section class="section-shell resume-viewer reveal-up" data-render="resumePage"></section>
+  </main>
+  <div data-render="modalRoot"></div>
+  <button class="music-btn" id="musicBtn" type="button" aria-label="播放或暂停背景音乐"><span class="music-icon">♪</span><span class="music-text">BGM</span></button>
+  <footer class="site-footer"><a href="./portfolio.html">作品集</a><a href="../home.html">返回</a></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

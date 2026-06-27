@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="./assets/css/style.css" />
+<script src="./assets/js/site-data.js"></script>
+  <title>主页｜朱炜贤 Game Design Portfolio</title>
+</head>
+<body class="home-page">
+  <audio id="bgm" data-audio="site.bgm" loop preload="auto"></audio>
+  <div class="site-bg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="noise"></i></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <header class="site-header" data-render="header"></header>
+  <main>
+    <section class="hero section-shell" id="profile">
+      <div class="hero-copy reveal-up">
+        <p class="eyebrow" data-text="hero.eyebrow"></p>
+        <h1 data-rich-title="hero.title" data-highlight="hero.highlight"></h1>
+        <p class="hero-desc" data-text="hero.desc"></p>
+        <div class="hero-actions" data-render="heroButtons"></div>
+        <div class="quick-stats" data-render="heroStats"></div>
+      </div>
+      <aside class="hero-visual reveal-up delay-1">
+        <div class="portrait-frame tilt-card">
+          <div data-image="site.avatar" data-class="portrait-img" data-placeholder-class="blue-placeholder portrait-placeholder" data-placeholder="头像 / 角色形象素材位"></div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="hero-tags" data-render="heroTags"></div>
+      </aside>
+    </section>
+    <section class="identity-bar reveal-up" data-render="identity"></section>
+
+    <section class="section-shell portfolio-entry-section" id="portfolio-entry">
+      <div class="section-title reveal-up">
+        <p class="eyebrow" data-text="homeSections.portfolioEyebrow"></p>
+        <h2 data-text="homeSections.portfolioTitle"></h2>
+        <p data-text="homeSections.portfolioDesc"></p>
+      </div>
+      <div class="orb-category-grid" data-render="portfolioCategoriesHome"></div>
+    </section>
+
+    <section class="section-shell experience-section" id="experience">
+      <div class="section-title reveal-up">
+        <p class="eyebrow" data-text="homeSections.experienceEyebrow"></p>
+        <h2 data-text="homeSections.experienceTitle"></h2>
+        <p data-text="homeSections.experienceDesc"></p>
+      </div>
+      <div class="experience-choice-row" data-render="experienceCards"></div>
+    </section>
+
+    <section class="section-shell split-section" id="skills">
+      <div class="section-title reveal-up">
+        <p class="eyebrow" data-text="homeSections.skillsEyebrow"></p>
+        <h2 data-text="homeSections.skillsTitle"></h2>
+        <p data-text="homeSections.skillsDesc"></p>
+      </div>
+      <div class="skill-level-grid reveal-up" data-render="skills"></div>
+    </section>
+
+    <section class="section-shell reveal-up" id="eggy">
+      <a class="eggy-section" href="./pages/eggy.html">
+        <div class="eggy-copy">
+          <p class="eyebrow eggy-eyebrow" data-text="homeSections.eggyEyebrow"></p>
+          <h2 data-text="homeSections.eggyTitle"></h2>
+          <p data-text="homeSections.eggyDesc"></p>
+          <em class="eggy-link-text">点击进入专项能力详情页</em>
+        </div>
+        <div class="eggy-asset-panel">
+          <div data-image="eggy.image" data-class="eggy-png" data-placeholder-class="blue-placeholder eggy-png-placeholder" data-placeholder="透明 PNG 形象素材位"></div>
+        </div>
+      </a>
+    </section>
+
+    <section class="section-shell game-wall-section reveal-up" id="games">
+      <div class="section-title">
+        <p class="eyebrow" data-text="homeSections.gamesEyebrow"></p>
+        <h2 data-text="homeSections.gamesTitle"></h2>
+        <p data-text="homeSections.gamesDesc"></p>
+      </div>
+      <div class="game-orbit-wall" data-render="games"></div>
+    </section>
+
+    <section class="section-shell awards-section reveal-up" id="awards">
+      <div class="section-title">
+        <p class="eyebrow award-eyebrow" data-text="homeSections.awardsEyebrow"></p>
+        <h2 data-text="homeSections.awardsTitle"></h2>
+        <p data-text="homeSections.awardsDesc"></p>
+      </div>
+      <div class="award-rail" id="awardRail">
+        <div class="awards-marquee"><div class="marquee-track" data-render="awards"></div></div>
+        <button class="award-arrow" id="awardToggle" type="button" aria-expanded="false" aria-label="展开或收起获奖证书">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="contact-section section-shell reveal-up" id="contact">
+      <div>
+        <p class="eyebrow" data-text="homeSections.contactEyebrow"></p>
+        <h2 data-text="homeSections.contactTitle"></h2>
+        <p data-text="homeSections.contactDesc"></p>
+      </div>
+      <div class="contact-card" data-render="contact"></div>
+    </section>
+  </main>
+  <div data-render="modalRoot"></div>
+  <button class="music-btn" id="musicBtn" type="button" aria-label="播放或暂停背景音乐"><span class="music-icon">♪</span><span class="music-text">BGM</span></button>
+  <footer class="site-footer"><span>© 2027 Zhu Weijian Portfolio</span><span>Designed for Game HR Review</span></footer>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

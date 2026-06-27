@@ -1,0 +1,1 @@
+把 Godot Web 导出的整个文件夹放在这里，例如 website/assets/godot/0618/index.html。
