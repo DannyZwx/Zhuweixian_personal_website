@@ -1,0 +1,13 @@
+上传说明：
+1. 解压本压缩包。
+2. 打开解压后的文件夹，确认最外层直接有 index.html、home.html、assets、pages。
+3. 在 GitHub 仓库点击 Add file / 添加文件 -> Upload files / 上传文件。
+4. 将解压后文件夹里的所有内容拖入 GitHub 上传页面，而不是上传这个 zip 压缩包本身。
+5. 提交到 main 分支，等待 Vercel 或 GitHub Pages 自动部署。
+
+正确结构：
+index.html
+home.html
+assets/
+pages/
+README_usage_V55_full_changelog.txt

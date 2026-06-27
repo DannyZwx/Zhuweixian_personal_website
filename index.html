@@ -4,11 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>进入｜朱炜贤个人网站</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="./assets/js/site-data.js"></script>
+  <script>
+    (function(){
+      var fallback='light';
+      try{
+        var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme;
+        fallback=configured==='dark'?'dark':'light';
+      }catch(e){}
+      var theme=fallback;
+      try{ theme=localStorage.getItem('zw-theme')||fallback; }catch(e){}
+      if(theme!=='dark'&&theme!=='light') theme=fallback;
+      document.documentElement.setAttribute('data-theme',theme);
+      document.documentElement.classList.add('entry-prepaint-v54');
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body class="entry-page" data-entry>
-  <iframe class="entry-underpage" src="./home.html" title="朱炜贤个人网站主页预览" tabindex="-1"></iframe>
+<body class="entry-page entry-v54-layout" data-entry>
+  <iframe class="entry-underpage" src="./home.html" loading="lazy" title="朱炜贤个人网站主页预览" tabindex="-1"></iframe>
   <div class="entry-flow" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <canvas id="scratchCanvas" class="scratch-canvas" aria-hidden="true"></canvas>
   <main class="scratch-entry-ui" aria-label="朱炜贤个人网站入口">
@@ -16,7 +30,8 @@
       <span data-text="site.roleLine"></span>
       <h1 data-text="site.name"></h1>
       <p data-text="site.tagline"></p>
-      <a id="entryFallback" class="entry-fallback" href="./home.html">快速划动鼠标进入 / 或点击进入</a>
+      <a id="entryFallback" class="entry-fallback" href="./home.html" aria-label="点击卡片右侧进入主页"></a>
+      <button class="entry-right-hotzone" type="button" aria-label="进入主页" title="点击卡片右侧进入主页"></button>
     </div>
     <div class="scratch-meter" aria-hidden="true"><span id="scratchMeterFill"></span></div>
     <div class="entry-motion-hint" data-text="site.entryHint"></div>

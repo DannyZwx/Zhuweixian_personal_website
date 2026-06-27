@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <script src="../assets/js/site-data.js"></script>
+<script data-v55-theme-prepaint>
+(function(){
+  var fallback='light';
+  try{var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme; fallback=configured==='dark'?'dark':'light';}catch(e){}
+  var theme=fallback;
+  try{theme=localStorage.getItem('zw-theme')||fallback;}catch(e){}
+  if(theme!=='dark'&&theme!=='light') theme=fallback;
+  document.documentElement.setAttribute('data-theme',theme);
+})();
+</script>
   <title>网站制作花絮｜朱炜贤</title>
 </head>
 <body class="sub-page making-page" data-page="making">

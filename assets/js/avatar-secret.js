@@ -239,6 +239,41 @@ void main(){
     }, { once:true });
   }
 
+
+  const SECRET_STORAGE_KEY_V42 = "zw_portfolio_site_data_v6";
+
+  function secretCloneV42(value){
+    try { return JSON.parse(JSON.stringify(value || {})); }
+    catch(e){ return {}; }
+  }
+
+  function secretMergeV42(base, extra){
+    if(!extra || typeof extra !== 'object') return base;
+    Object.keys(extra).forEach(function(key){
+      const value = extra[key];
+      if(Array.isArray(value)){
+        base[key] = value.slice();
+      }else if(value && typeof value === 'object'){
+        if(!base[key] || typeof base[key] !== 'object' || Array.isArray(base[key])) base[key] = {};
+        secretMergeV42(base[key], value);
+      }else{
+        base[key] = value;
+      }
+    });
+    return base;
+  }
+
+  function getSecretSiteDataV42(){
+    const base = secretCloneV42(window.SITE_DATA || {});
+    try{
+      const local = localStorage.getItem(SECRET_STORAGE_KEY_V42);
+      if(local){
+        return secretMergeV42(base, JSON.parse(local));
+      }
+    }catch(e){}
+    return base;
+  }
+
   function svgTrailData(index){
     const palette = [
       ['#6ed6c9','#f4dfb8','#ffffff'],
@@ -261,13 +296,23 @@ void main(){
   function normalizeSecretImagePath(value){
     if(typeof value !== 'string') return '';
     let src = value.trim();
-    if(!src || !/\.(png|jpe?g|webp|gif|svg)$/i.test(src)) return '';
-    if(/^https?:\/\//i.test(src) || src.startsWith('../') || src.startsWith('/')) return src;
+    if(!src) return '';
+    src = src.replace(/\\/g, '/');
+    src = src.replace(/^file:\/\/\//i, '');
+    const websiteAssetMatch = src.match(/(?:^|\/)website\/assets\/(.+)$/i);
+    if(websiteAssetMatch) src = 'assets/' + websiteAssetMatch[1];
+    const assetMatch = src.match(/(?:^|\/)assets\/(.+)$/i);
+    if(assetMatch && !/^https?:\/\//i.test(src) && !src.startsWith('../')) src = 'assets/' + assetMatch[1];
+    if(!/\.(png|jpe?g|webp|gif|svg)(\?.*)?$/i.test(src)) return '';
+    if(/^https?:\/\//i.test(src) || src.startsWith('data:')) return src;
+    if(src.startsWith('../')) return src;
+    if(src.startsWith('/assets/')) return '..' + src;
+    if(src.startsWith('/')) return src;
     return '../' + src.replace(/^\.\//,'');
   }
 
   function collectTrailImages(){
-    const data = window.SITE_DATA || {};
+    const data = getSecretSiteDataV42();
     const configured = data.secret && Array.isArray(data.secret.trailImages)
       ? data.secret.trailImages.map(normalizeSecretImagePath).filter(Boolean)
       : [];

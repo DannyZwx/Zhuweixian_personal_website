@@ -4,7 +4,7 @@ window.SITE_DATA = {
     "brand": "ZHU WEIXIAN",
     "roleLine": "2027应届实习生",
     "tagline": "Game Design / Game Art / UI Design / Animation",
-    "entryHint": "移动鼠标可以窥视主页，快速划开进入作品现场。",
+    "entryHint": "滑动进入",
     "phone": "19323794178",
     "email": "1853954561@qq.com",
     "school": "广东白云学院",
@@ -14,7 +14,8 @@ window.SITE_DATA = {
     "avatar": "",
     "bgm": "assets/audio/bgm.mp3",
     "hoverSound": "assets/audio/hover.wav",
-    "clickSound": "assets/audio/click.wav"
+    "clickSound": "assets/audio/click.wav",
+    "defaultTheme": "light"
   },
   "ui": {
     "nav": [
