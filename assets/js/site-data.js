@@ -1,4 +1,15 @@
 window.SITE_DATA = {
+  "maintenance": {
+    "version": "V86",
+    "updatedAt": "2026-06-28",
+    "notes": [
+      "修复编辑器中打开使用教程面板时内容为空的问题。",
+      "教程面板增加 V86 稳定兜底，兼容旧版 V79/V80/V81 教程重写逻辑，避免内容被替换后又被隐藏。",
+      "同步更新日志、编辑器标题、版本日志入口与网站 maintenance 数据到 V86。",
+      "网站端继续保留 V85 获奖证书视觉系统、黑夜模式配色、白天导航选中态和特殊导航按钮适配。",
+      "完整工程包与 GitHub 上传包已同步生成。"
+    ]
+  },
   "site": {
     "name": "朱炜贤",
     "brand": "ZHU WEIXIAN",
@@ -60,14 +71,14 @@ window.SITE_DATA = {
     "themeDark": "Dark",
     "copyPhone": "复制电话",
     "copyEmail": "复制邮箱",
-    "copied": "已复制",
+    "copied": "复制成功",
     "portfolioEnter": "进入分类",
     "experienceEnter": "查看经历",
     "play": "播放",
     "runGame": "运行游戏",
     "close": "关闭",
-    "imagePlaceholder": "视觉展示",
-    "iconPlaceholder": "图标",
+    "imagePlaceholder": "作品图片待补充",
+    "iconPlaceholder": "图标待补充",
     "makingEnter": "查看制作花絮",
     "experienceDetail": "查看详情",
     "backUpper": "返回",
@@ -109,7 +120,8 @@ window.SITE_DATA = {
     "tags": [
       "UI Motion",
       "Narrative",
-      "Game System"
+      "Game System",
+      "Visual Design"
     ]
   },
   "identity": [
@@ -152,7 +164,7 @@ window.SITE_DATA = {
     "gamesDesc": "以已深入体验的游戏为中心展示，左右两侧分布尚未深入阅历的游戏图标。图标不再持续随机浮动，改用轻量拖拽和悬停反馈，保证浏览流畅。",
     "awardsEyebrow": "Awards",
     "awardsTitle": "获奖与证书",
-    "awardsDesc": "红色主题强化荣誉识别。展开后点击任一奖项可查看详情。",
+    "awardsDesc": "获奖与证书按国家级、省级、校级、证书四类展示；一等奖在所属类型基础上额外高亮，展开后可查看完整列表。",
     "contactEyebrow": "Contact",
     "contactTitle": "期待游戏策划 / 游戏美术 / UI设计实习机会",
     "contactDesc": "我更适合需要审美、原型、逻辑和动效表达同时存在的岗位，也愿意在项目中承担跨职能沟通与执行推进。"
@@ -861,7 +873,7 @@ window.SITE_DATA = {
     "toolsTitle": "使用工具",
     "toolsDesc": "展示本网站制作中使用的主要工具。",
     "durationTitle": "制作耗时",
-    "durationDesc": "隐藏在制作过程里的疲惫记录。",
+    "durationDesc": "隐藏在制作过程里的疲惫记录",
     "durationValue": "累死了",
     "processNodes": [
       {
@@ -925,7 +937,7 @@ window.SITE_DATA = {
   },
   "materialGuide": {
     "title": "图片素材上传位置与推荐比例",
-    "desc": "以下素材统一放在 website/assets/images/ 中；音乐放在 website/assets/audio/ 中；Godot 网页导出文件放在 website/assets/godot/ 中。",
+    "desc": "素材建议统一放入 website/assets/ 下的一级目录：images、icons、files、audio、godot。路径填写时从 assets/ 开始，不要写 website/ 或电脑绝对路径。",
     "items": [
       {
         "name": "头像 / 角色形象",
@@ -939,13 +951,13 @@ window.SITE_DATA = {
       },
       {
         "name": "软件图标",
-        "path": "assets/images/icons/ps.png",
-        "ratio": "建议 1:1，推荐 512×512px，PNG/SVG 最合适。"
+        "path": "assets/icons/ps.png",
+        "ratio": "软件图标统一放在 website/assets/icons/ 中；1:1，推荐 512×512px，PNG/SVG 最合适。"
       },
       {
         "name": "游戏图标",
-        "path": "assets/images/games/minecraft.png",
-        "ratio": "建议 1:1，推荐 512×512px，圆形裁切显示。"
+        "path": "assets/icons/minecraft.png",
+        "ratio": "游戏图标统一放在 website/assets/icons/ 中；1:1，推荐 512×512px，圆形裁切显示。"
       },
       {
         "name": "作品集封面",
@@ -974,18 +986,18 @@ window.SITE_DATA = {
       },
       {
         "name": "未阅历游戏氛围图标",
-        "path": "assets/images/games/unplayed-01.png",
-        "ratio": "建议 1:1，推荐 512×512px；显示在游戏阅历板块两侧，作为氛围图标，不显示游戏名称。"
+        "path": "assets/icons/unplayed-01.png",
+        "ratio": "游戏图标统一放在 website/assets/icons/ 中；1:1，推荐 512×512px，圆形裁切显示。"
       },
       {
         "name": "简历图片",
-        "path": "assets/images/resume/resume.png",
-        "ratio": "建议 A4 竖版比例，推荐 1240×1754px 或 2480×3508px，PNG/JPG 均可。"
+        "path": "assets/images/resume.png",
+        "ratio": "简历图片统一放在 website/assets/images/ 中；建议 A4 竖版比例，推荐 1240×1754px 或 2480×3508px。"
       },
       {
         "name": "简历 PDF",
         "path": "assets/files/resume.pdf",
-        "ratio": "建议放在 website/assets/files/ 中；用于简历页面的 PDF 下载按钮。"
+        "ratio": "简历 PDF 统一放在 website/assets/files/ 中；用于简历页面的 PDF 下载按钮。"
       }
     ]
   },
@@ -1173,5 +1185,128 @@ window.SITE_DATA = {
       "",
       ""
     ]
+  },
+  "visibleText": {
+    "documentTitles": {
+      "entry": "进入｜朱炜贤个人网站",
+      "home": "主页｜朱炜贤 Game Design Portfolio",
+      "video": "视频作品｜朱炜贤",
+      "graphic": "平面作品｜朱炜贤",
+      "music": "编曲作品｜朱炜贤",
+      "game": "小游戏作品｜朱炜贤",
+      "portfolio": "作品集分类｜朱炜贤",
+      "campus": "校园经历｜朱炜贤",
+      "project": "项目经历｜朱炜贤",
+      "eggy": "蛋仔派对专项技能｜朱炜贤",
+      "making": "网站制作花絮｜朱炜贤",
+      "resume": "简历查看｜朱炜贤",
+      "avatarSecret": "角色形象隐藏页"
+    },
+    "common": {
+      "menu": "菜单",
+      "themeAria": "切换白天 / 黑夜模式",
+      "musicIcon": "♪",
+      "musicLabel": "BGM",
+      "back": "返回",
+      "portfolio": "作品集",
+      "close": "关闭",
+      "emptyPlayer": "当前播放器已关闭。",
+      "footerCopy": "© 2027 Zhu Weixian Portfolio",
+      "footerTagline": "Game Design / UI Motion / Visual Portfolio",
+      "musicAria": "播放或暂停背景音乐",
+      "copyHint": "点击复制",
+      "imagePlaceholder": "作品图片待补充",
+      "iconPlaceholder": "图标待补充",
+      "imageZoom": "点击放大查看"
+    },
+    "entry": {
+      "ariaLabel": "朱炜贤个人网站入口",
+      "underpageTitle": "朱炜贤个人网站主页预览",
+      "rightAria": "点击卡片右侧进入主页",
+      "rightTitle": "点击卡片右侧进入主页"
+    },
+    "home": {
+      "eggyEnter": "点击进入专项能力详情页",
+      "awardToggleLabel": "展开或收起获奖证书",
+      "secretHint": "长按试试？"
+    },
+    "portfolioRedirect": {
+      "eyebrow": "Portfolio Categories",
+      "title": "作品集分类已整合到首页",
+      "desc": "页面将自动回到首页作品集板块，也可以点击按钮立即前往。",
+      "button": "立即前往首页作品集"
+    },
+    "miniGameHelp": {
+      "title": "Godot 小游戏嵌入方法",
+      "desc": "在 Godot 中选择 Web 导出，将整个导出文件夹放入 website/assets/godot/游戏名/，确认其中包含 index.html，再填写 assets/godot/游戏名/index.html。",
+      "libraryTitle": "小游戏作品",
+      "libraryDesc": "点击作品卡片即可打开运行窗口；有封面时优先展示封面，没有封面时显示占位信息。",
+      "emptyIframe": "暂未填写 Godot Web index.html 路径。"
+    },
+    "media": {
+      "emptyBili": "暂未添加 Bilibili iframe 地址。"
+    },
+    "making": {
+      "processType": "Process",
+      "toolsType": "Tools",
+      "durationType": "Duration",
+      "processLink": "查看制作流程 →",
+      "toolsLink": "查看使用工具 →",
+      "durationLink": "悬停查看耗时",
+      "processImagePlaceholder": "流程图片待补充",
+      "toolsIconPlaceholder": "工具图标待补充",
+      "footerLabel": "Behind The Website",
+      "durationBack": "返回"
+    },
+    "resume": {
+      "fileEyebrow": "Resume File",
+      "downloadImage": "下载简历图片",
+      "downloadPdf": "下载 PDF 文件",
+      "defaultDesc": "支持放大查看简历图片，也可下载图片或 PDF 文件。",
+      "missingImage": "个人简历待补充"
+    }
+  },
+  "layout": {
+    "entryCardWidth": 680,
+    "entryCardHeight": 360,
+    "entryCardOffsetX": 0,
+    "entryCardOffsetY": 0,
+    "entryTiltStrength": 3.8,
+    "entryHoverSpeed": 0.18,
+    "entryHotzoneWidth": 72,
+    "homeSectionOrder": "profile,identity,portfolio-entry,experience,skills,eggy,games,awards,contact",
+    "hiddenHomeSections": "",
+    "homeSectionGap": 94,
+    "homeModuleOpacity": 1,
+    "heroAvatarScale": 1,
+    "heroAvatarOffsetX": 0,
+    "heroAvatarOffsetY": 0,
+    "portfolioCardScale": 1,
+    "experienceCardScale": 1,
+    "skillCardScale": 1,
+    "eggyCardScale": 1,
+    "gameWallScale": 1,
+    "awardScale": 1,
+    "makingCardScale": 1,
+    "cardHoverLift": 4,
+    "cardHoverTilt": 1,
+    "cardGlassOpacity": 0.78,
+    "enableCursorGlow": "on",
+    "backgroundSpeedDay": 1.08,
+    "backgroundSpeedNight": 1.55,
+    "reduceMotionOnMobile": "on"
+  },
+  "awardDisplay": {
+    "visualVersion": "V85",
+    "typeSystem": [
+      "national",
+      "provincial",
+      "campus",
+      "certificate"
+    ],
+    "firstPrizeHighlight": true,
+    "darkTheme": "balanced-warm-dark",
+    "lightTheme": "soft-red-cream",
+    "marqueeHeight": "same-as-toggle"
   }
 };

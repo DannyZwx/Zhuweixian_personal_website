@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="./assets/css/style.css" />
 <script src="./assets/js/site-data.js"></script>
-<script data-v55-theme-prepaint>
+<script data-v73-theme-prepaint>
 (function(){
   var fallback='light';
   try{var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme; fallback=configured==='dark'?'dark':'light';}catch(e){}
   var theme=fallback;
-  try{theme=localStorage.getItem('zw-theme')||fallback;}catch(e){}
-  if(theme!=='dark'&&theme!=='light') theme=fallback;
+  try{var sessionChoice=sessionStorage.getItem('zw-theme-session-v73'); if(sessionChoice==='dark'||sessionChoice==='light') theme=sessionChoice;}catch(e){}
   document.documentElement.setAttribute('data-theme',theme);
+  try{if(sessionStorage.getItem('zw-entry-smooth-v78')==='1') document.documentElement.classList.add('entry-from-v78');}catch(e){}
 })();
 </script>
   <title>主页｜朱炜贤 Game Design Portfolio</title>
@@ -116,7 +116,7 @@
   </main>
   <div data-render="modalRoot"></div>
   <button class="music-btn" id="musicBtn" type="button" aria-label="播放或暂停背景音乐"><span class="music-icon">♪</span><span class="music-text">BGM</span></button>
-  <footer class="site-footer"><span>© 2027 Zhu Weijian Portfolio</span><span>Designed for Game HR Review</span></footer>
+  <footer class="site-footer"><span>© 2027 Zhu Weixian Portfolio</span><span>Game Design / UI Motion / Visual Portfolio</span></footer>
   <script src="./assets/js/main.js"></script>
 </body>
 </html>

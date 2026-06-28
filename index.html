@@ -6,19 +6,21 @@
   <title>进入｜朱炜贤个人网站</title>
   <script src="./assets/js/site-data.js"></script>
   <script>
-    (function(){
-      var fallback='light';
-      try{
-        var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme;
-        fallback=configured==='dark'?'dark':'light';
-      }catch(e){}
-      var theme=fallback;
-      try{ theme=localStorage.getItem('zw-theme')||fallback; }catch(e){}
-      if(theme!=='dark'&&theme!=='light') theme=fallback;
-      document.documentElement.setAttribute('data-theme',theme);
-      document.documentElement.classList.add('entry-prepaint-v54');
-    })();
-  </script>
+      (function(){
+        var fallback='light';
+        try{
+          var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme;
+          fallback=configured==='dark'?'dark':'light';
+        }catch(e){}
+        var theme=fallback;
+        try{
+          var sessionChoice=sessionStorage.getItem('zw-theme-session-v73');
+          if(sessionChoice==='dark'||sessionChoice==='light') theme=sessionChoice;
+        }catch(e){}
+        document.documentElement.setAttribute('data-theme',theme);
+        document.documentElement.classList.add('entry-prepaint-v54');
+      })();
+    </script>
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body class="entry-page entry-v54-layout" data-entry>

@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="../assets/css/style.css" />
 <script src="../assets/js/site-data.js"></script>
-<script data-v55-theme-prepaint>
+<script data-v73-theme-prepaint>
 (function(){
   var fallback='light';
   try{var configured=window.SITE_DATA&&window.SITE_DATA.site&&window.SITE_DATA.site.defaultTheme; fallback=configured==='dark'?'dark':'light';}catch(e){}
   var theme=fallback;
-  try{theme=localStorage.getItem('zw-theme')||fallback;}catch(e){}
-  if(theme!=='dark'&&theme!=='light') theme=fallback;
+  try{var sessionChoice=sessionStorage.getItem('zw-theme-session-v73'); if(sessionChoice==='dark'||sessionChoice==='light') theme=sessionChoice;}catch(e){}
   document.documentElement.setAttribute('data-theme',theme);
 })();
 </script>
@@ -26,7 +25,7 @@
     <section class="page-hero section-shell reveal-up" data-render="pageHero"></section>
     <section class="section-shell godot-help reveal-up">
       <h2>Godot 小游戏嵌入方法</h2>
-      <p>在 Godot 中选择 Web 导出，把导出的整个文件夹放进 <code>website/assets/godot/你的游戏名/</code>。保证里面有 <code>index.html</code>，再在编辑器中填写 <code>assets/godot/你的游戏名/index.html</code>。</p>
+      <p>在 Godot 中选择 Web 导出，将整个导出文件夹放入 <code>website/assets/godot/游戏名/</code>。确认其中包含 <code>index.html</code> 后，在编辑器中填写 <code>assets/godot/游戏名/index.html</code>。</p>
     </section>
     <section class="section-shell" data-render="miniGames"></section>
   </main>

@@ -4,11 +4,23 @@
   const body = document.body;
   if(!body || !body.classList.contains('avatar-secret-page')) return;
 
+  /* V83：隐藏页主题修复。
+     主站 V73 之后以 sessionStorage 保存当前会话主题；旧 localStorage 可能仍残留 light。
+     隐藏页必须优先读取 sessionStorage，避免黑夜模式进入隐藏页后被旧缓存改回白天背景。 */
   try{
-    const savedTheme = localStorage.getItem('zw-theme') || 'dark';
+    const sessionTheme = sessionStorage.getItem('zw-theme-session-v73');
+    const localTheme = localStorage.getItem('zw-theme');
+    const configuredTheme = window.SITE_DATA && window.SITE_DATA.site && window.SITE_DATA.site.defaultTheme;
+    const savedTheme = (sessionTheme === 'dark' || sessionTheme === 'light')
+      ? sessionTheme
+      : ((localTheme === 'dark' || localTheme === 'light')
+          ? localTheme
+          : (configuredTheme === 'light' ? 'light' : 'dark'));
     document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
   }catch(e){
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.dataset.theme = 'dark';
   }
 
   function appendBgCanvas(){
@@ -409,4 +421,41 @@ void main(){
 
   // V28：丝绸极光背景已与主站背景对调，隐藏页不再启动 WebGL 背景，只保留拖尾彩蛋。
   initImageTrail();
+})();
+
+
+/* ================= V79：隐藏页手机触控拖尾适配 ================= */
+(function initAvatarSecretMobileTrailV79(){
+  'use strict';
+  const body = document.body;
+  if(!body || !body.classList.contains('avatar-secret-page')) return;
+  function ready(fn){ if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  ready(function(){
+    body.classList.add('avatar-secret-mobile-v79');
+    body.style.touchAction = 'none';
+    body.style.overscrollBehavior = 'none';
+    const coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
+    if(!coarse) return;
+    let lastSynthetic = 0;
+    function emitPointerLike(x,y){
+      const now = performance.now();
+      if(now - lastSynthetic < 42) return;
+      lastSynthetic = now;
+      try{
+        window.dispatchEvent(new PointerEvent('pointermove', {clientX:x, clientY:y, pointerType:'touch', bubbles:true}));
+      }catch(_e){
+        const ev = new Event('pointermove'); ev.clientX = x; ev.clientY = y; window.dispatchEvent(ev);
+      }
+    }
+    function fromTouch(ev){
+      const t = ev.touches && ev.touches[0] || ev.changedTouches && ev.changedTouches[0];
+      if(!t) return;
+      if(ev.cancelable) ev.preventDefault();
+      emitPointerLike(t.clientX, t.clientY);
+    }
+    body.addEventListener('touchstart', fromTouch, {passive:false});
+    body.addEventListener('touchmove', fromTouch, {passive:false});
+    body.addEventListener('pointerdown', function(ev){ emitPointerLike(ev.clientX, ev.clientY); }, {passive:true});
+    body.addEventListener('pointermove', function(ev){ emitPointerLike(ev.clientX, ev.clientY); }, {passive:true});
+  });
 })();

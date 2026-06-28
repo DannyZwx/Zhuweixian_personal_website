@@ -1,0 +1,1 @@
+PDF 和其他下载文件统一放在这里。简历 PDF 推荐路径：assets/files/resume.pdf
